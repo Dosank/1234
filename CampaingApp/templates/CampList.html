@@ -1,0 +1,7 @@
+{% for camp in camps %}
+    <a href="{% url 'QuestDetail' camp.id %}"> 
+    {{ camp.title}}
+    </a>
+    {{ camp.master}}
+    <br>
+{% endfor %}
