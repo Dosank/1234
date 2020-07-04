@@ -1,16 +1,22 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.http import HttpResponseRedirect
 
-from .forms import CreateCampaingF, CreateCampaingF2
-from .models import Campaing, Quest
+from .forms import CreateCampaingF, CreateCampaingF2, CreatePjF
+from .models import Campaing, Quest, Pj
+
+
+class Index(View):
+
+    def get(self, request):
+        return render(request, "Index.html", {})
 
 
 class CampList (View):
-    
+
     def get(self, request):
         camp = Campaing.objects.all()
         return render(request, "CampList.html", {"camps":camp})
+    
 
 class QuestDetail (View):
 
@@ -19,16 +25,18 @@ class QuestDetail (View):
         allquest = camp.questo.all()
         return render(request, "QuestDetail.html", {"allquests":allquest, "camp":camp})
 
+
 # Forma de hacerlo
 def CampaingCreateView(request):
     if request.method == 'POST':
         form = CreateCampaingF(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("CampView")
+            return redirect("camp_list")
     else:
         form = CreateCampaingF()
         return render(request, 'CreateCampaing.html', {'form':form})
+
 
 # Otra forma de hacerlo
 def CampaingCreateView2(request):
@@ -39,7 +47,30 @@ def CampaingCreateView2(request):
             campTemp.title = form.cleaned_data['title']
             campTemp.master = form.cleaned_data['master']
             campTemp.save()
-            return redirect("CampView")
+            return redirect("camp_list")
     else:
         form = CreateCampaingF2()
         return render(request, 'CreateCampaing.html', {'form':form})
+
+
+def PjList(request):
+    pj = Pj.objects.all()
+    return render(request, "PjList.html", {"pjs":pj})
+
+
+def PjCreate(request):
+    if request.method == 'POST':
+        form = CreatePjF(request.POST)
+        if form.is_valid():
+            pjTemp = Pj()
+            pjTemp.name = form.cleaned_data['nameF']
+            pjTemp.user = form.cleaned_data['userF']
+            pjTemp.race = form.cleaned_data['raceF']
+            pjTemp.save()
+            return redirect('PjList')
+    else:
+        form = CreatePjF()
+        return render(request, 'PjCreate.html', {'form':form})
+
+
+#3 - Crear una vista para ver los datos del Perfil.

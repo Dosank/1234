@@ -1,0 +1,17 @@
+{%extends "Base.html"%}
+
+{%block content%}
+
+{% for pj in pjs %}
+{{ pj.name}}
+{{ pj.user}}
+<br>
+{% endfor %}
+
+<div class="row">
+    <div class="col-sm-4">
+        <a class="btn btn-primary" href="{% url 'PjCreate' %}" role="button">Nuevo Personaje</a>
+    </div>
+</div>
+
+{%endblock%}
