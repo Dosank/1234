@@ -1,7 +1,14 @@
+{%extends "base.html"%}
+
+{%block content%}
+
 {% for camp in camps %}
-    <a href="{% url 'QuestDetail' camp.id %}"> 
+<a href="{% url 'QuestDetail' camp.id %}">
     {{ camp.title}}
-    </a>
-    {{ camp.master}}
-    <br>
+</a>
+{{ camp.master}}
+<br>
 {% endfor %}
+
+
+{%endblock%}

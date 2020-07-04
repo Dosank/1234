@@ -1,8 +1,19 @@
-{{ camp.title}}
-{{ camp.master}}
+{%extends "Base.html"%}
+
+
+{%block content%}
+<p> Titulo : {{ camp.title}}</p>
+
+<p>Master: {{ camp.master}}</p>
 
 {% for quest in allquests %}
-    {{ quest.title}}
-    {{ quest.detail}}
-    <br>
+
+<p> Quest: {{ quest.title}}</p>
+
+<p>Detalle:{{ quest.detail}}</p>
+<br>
 {% endfor %}
+
+
+
+{%endblock%}

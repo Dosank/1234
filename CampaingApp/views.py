@@ -6,11 +6,18 @@ from .forms import CreateCampaingF, CreateCampaingF2
 from .models import Campaing, Quest
 
 
+class Index(View):
+    
+    def get(self, request):
+        return render(request, "Index.html", {})
+
+
 class CampList (View):
     
     def get(self, request):
         camp = Campaing.objects.all()
         return render(request, "CampList.html", {"camps":camp})
+    
 
 class QuestDetail (View):
 
@@ -18,6 +25,7 @@ class QuestDetail (View):
         camp = Campaing.objects.get(id=id)
         allquest = camp.questo.all()
         return render(request, "QuestDetail.html", {"allquests":allquest, "camp":camp})
+
 
 # Forma de hacerlo
 def CampaingCreateView(request):
@@ -29,6 +37,7 @@ def CampaingCreateView(request):
     else:
         form = CreateCampaingF()
         return render(request, 'CreateCampaing.html', {'form':form})
+
 
 # Otra forma de hacerlo
 def CampaingCreateView2(request):
@@ -43,3 +52,10 @@ def CampaingCreateView2(request):
     else:
         form = CreateCampaingF2()
         return render(request, 'CreateCampaing.html', {'form':form})
+
+
+# 1 - Crear vista para listar personajes del usuario
+
+
+#2 - Crear vista para crear un nuevo personaje 
+
