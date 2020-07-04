@@ -54,8 +54,11 @@ def CampaingCreateView2(request):
         return render(request, 'CreateCampaing.html', {'form':form})
 
 
-# 1 - Crear vista para listar personajes del usuario
+# 0 - En el Base.html , agregar un link a Index 
+# Dicho index debe tener el siguiente icono . https://fontawesome.com/icons/home?style=solid
 
+# 1 - Crear vista para listar personajes del usuario. Agregar boton para crear personaje
 
 #2 - Crear vista para crear un nuevo personaje 
 
+# 3 - Crear una vista para ver los datos del Perfil.
