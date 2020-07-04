@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{%extends "Base.html"%}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create a cool little campaign</title>
-</head>
+{%block content%}
 
-<body>
-    <form method="post">
+
+<form method="post">
+    <div class="form-group">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Save" />
-    </form>
-</body>
-
-</html>
+    </div>
+    <input type="submit" class="btn btn-outline-success" value="Guardar" />
+</form>
+{%endblock%}
