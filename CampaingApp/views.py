@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponseRedirect
 
-from .forms import CreateCampaingF
+from .forms import CreateCampaingF, CreateCampaingF2
 from .models import Campaing, Quest
 
 
@@ -19,6 +19,7 @@ class QuestDetail (View):
         allquest = camp.questo.all()
         return render(request, "QuestDetail.html", {"allquests":allquest, "camp":camp})
 
+# Forma de hacerlo
 def CampaingCreateView(request):
     if request.method == 'POST':
         form = CreateCampaingF(request.POST)
@@ -29,13 +30,16 @@ def CampaingCreateView(request):
         form = CreateCampaingF()
         return render(request, 'CreateCampaing.html', {'form':form})
 
+# Otra forma de hacerlo
 def CampaingCreateView2(request):
     if request.method == 'POST':
-        form = CreateCampaingF(request.POST)
+        form = CreateCampaingF2(request.POST)
         if form.is_valid():
-            form.save()
+            campTemp = Campaing()
+            campTemp.title = form.cleaned_data['title']
+            campTemp.master = form.cleaned_data['master']
+            campTemp.save()
             return redirect("CampView")
     else:
-        form = CreateCampaingF()
+        form = CreateCampaingF2()
         return render(request, 'CreateCampaing.html', {'form':form})
-
