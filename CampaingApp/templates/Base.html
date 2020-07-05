@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="en">
 
+<style>
+    .nav a:hover {
+        background-color:  #e6ecff;
+        color: black;
+      }
+</style>
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -17,27 +24,29 @@
 </head>
 
 
+
 <body class="m-2">
 
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link" href="{%url 'Index'%}"> <i class="fas fa-home" style="font-size: 2em;"></i> </a>
+            <a class="nav-link {% block nav-home %}{% endblock %}" href="{%url 'Index'%}"> <i class="fas fa-home" style="font-size: 1   em;"></i> </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="{%url 'camp_list'%}">CampaÑas</a>
+            <a class="nav-link {% block nav-camp %}{% endblock %}" href="{%url 'camp_list'%}">CampaÑas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{%url 'PjList'%}">Personajes</a>
+            <a class="nav-link {% block nav-pj %}{% endblock %}" href="{%url 'PjList'%}">Personajes</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="# Llevar al perfil">Perfil</a>
+            <a class="nav-link {% block nav-profiles %}{% endblock %}" href="{%url 'Profiles'%}">Perfil</a>
         </li>
     </ul>
 
-    {% block content%}
+    <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        {% block content%}
 
-
-    {%endblock%}
+        {%endblock%}
+    </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

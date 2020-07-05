@@ -30,7 +30,7 @@ class Race(models.Model):
 class Pj(models.Model):
     id      = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name    = models.CharField(max_length=350, null=False, blank=False)
-    user    = models.ForeignKey(User, on_delete=models.PROTECT)
+    user    = models.ForeignKey(User, related_name="pjota",on_delete=models.PROTECT)
     race    = models.ForeignKey(Race, on_delete=models.PROTECT)
 
     def __str__(self):

@@ -1,19 +1,16 @@
 {%extends "Base.html"%}
 
-
 {%block content%}
-<p> Titulo : {{ camp.title}}</p>
 
+<p> Titulo : {{ camp.title}}</p>
 <p>Master: {{ camp.master}}</p>
 
 {% for quest in allquests %}
 
 <p> Quest: {{ quest.title}}</p>
+<p>Detalle: {{ quest.detail}}</p>
 
-<p>Detalle:{{ quest.detail}}</p>
 <br>
 {% endfor %}
-
-
 
 {%endblock%}

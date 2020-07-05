@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from .forms import CreateCampaingF, CreateCampaingF2, CreatePjF
-from .models import Campaing, Quest, Pj
+from .models import Campaing, Quest, Pj, User
 
 
 class Index(View):
@@ -73,4 +73,16 @@ def PjCreate(request):
         return render(request, 'PjCreate.html', {'form':form})
 
 
-#3 - Crear una vista para ver los datos del Perfil.
+class ProfileView(View):
+
+    def get(self, request):
+        profile = User.objects.all()
+        return render(request, "Profiles.html", {'profiles':profile})
+
+
+class ProfileDetail(View):
+
+    def get(self, request, id):
+        profile = User.objects.get(id=id)
+        pj = profile.pjota.all()
+        return render(request, "ProfilesDetail.html", {"pjs":pj, 'profile':profile})

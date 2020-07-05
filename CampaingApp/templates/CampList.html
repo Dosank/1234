@@ -1,14 +1,25 @@
 {%extends "base.html"%}
-
+{% block nav-camp %}active{% endblock %}
 {%block content%}
 
-{% for camp in camps %}
-<a href="{% url 'QuestDetail' camp.id %}">
-    {{ camp.title}}
-</a>
-{{ camp.master}}
+<h1>Lista de Campañas</h1>
 <br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Titulo Campaña</th>
+      <th scope="col">Master</th>
+    </tr>
+  </thead>
+{% for camp in camps %}
+  <tbody>
+    <tr>
+      <td>  <a href="{% url 'QuestDetail' camp.id %}"> {{ camp.title}} </a>  </td>
+      <td> {{ camp.master}} </td>
+    </tr>
+  </tbody>
 {% endfor %}
+</table>
 
 <div class="row">
     <div class="col-sm-4">

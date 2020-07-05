@@ -1,0 +1,13 @@
+{%extends "base.html"%}
+{% block nav-profiles %}active{% endblock %}
+
+{%block content%}
+
+{% for profile in profiles %}
+<a href="{% url 'ProfileDetail' profile.id %}">
+    {{ profile.username}}
+</a>
+<br>
+{% endfor %}
+
+{%endblock%}

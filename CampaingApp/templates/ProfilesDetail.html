@@ -1,0 +1,19 @@
+{%extends "Base.html"%}
+
+
+{%block content%}
+
+<p> Username : {{ profile.username}}</p>
+<p>E-mail: {{ profile.email}}</p>
+
+{% for pj in pjs %}
+
+<p> Peronaje: {{ pj.name}}</p>
+<p>Raza:{{ pj.race}}</p>
+
+<br>
+{% endfor %}
+
+
+
+{%endblock%}

@@ -5,9 +5,11 @@ from .views import (
     CampList,
     QuestDetail,
     CampaingCreateView,
-    CampaingCreateView2,    
+    CampaingCreateView2,
     PjList,
     PjCreate,
+    ProfileView,
+    ProfileDetail,
 )
 
 urlpatterns = [
@@ -18,6 +20,7 @@ urlpatterns = [
     path('create_Campaing2/', CampaingCreateView2, name='CreateCamp2'),
     path('pj_list/', PjList, name='PjList'),
     path('pj_create/', PjCreate, name='PjCreate'),
-
+    path('profiles/', ProfileView.as_view(), name='Profiles'),
+    path('profile-Detail/<str:id>', ProfileDetail.as_view(), name="ProfileDetail"),
 
 ]
